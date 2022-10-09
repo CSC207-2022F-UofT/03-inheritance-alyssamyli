@@ -6,6 +6,7 @@
  */
 
 import java.util.Arrays;
+import java.util.List;
 
 public abstract class Bag {
     /*
@@ -18,7 +19,7 @@ public abstract class Bag {
     private String color;
     private int numberOfContents;
     private int capacity;
-    private String[] contents;
+    private String[] contents = new String[0];
 
 
     /*
@@ -77,7 +78,11 @@ public abstract class Bag {
      *       and false otherwise.
      */
     public boolean addItem(String item){
-        if(contents.length < capacity){
+        if(contents == null){
+            contents[0] = item;
+            return true;
+        }
+        else if (contents.length < capacity) {
             contents = Arrays.copyOf(contents, contents.length+1);
             contents[contents.length - 1] =item;
             numberOfContents += 1;
